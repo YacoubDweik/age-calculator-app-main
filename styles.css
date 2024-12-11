@@ -1,0 +1,231 @@
+@font-face {
+  font-family: "Poppins";
+  src: url(./assets/fonts/Poppins-Italic.ttf);
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url(./assets/fonts/Poppins-Bold.ttf);
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url(./assets/fonts/Poppins-ExtraBoldItalic.ttf);
+  font-weight: 800;
+  font-style: italic;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colors */
+  --Purple: hsl(259, 100%, 65%);
+  --Light-red: hsl(0, 100%, 67%);
+  --White: hsl(0, 0%, 100%);
+  --main-bg: hsl(0, 0%, 94%);
+  --label: hsl(0, 1%, 44%);
+  --placeholder: hsl(0, 0%, 86%);
+  --black: hsl(0, 0%, 8%);
+  /* Sizes */
+  --font-normal: 400; /* + Italic: for errors */
+  --font-bold: 700; /* for inputs & labels */
+  --font-extraBold: 800; /* + Italic: for titles */
+  --sm: 0.5rem; /* 16px */
+  --md: 1rem; /* 32px */
+  --la: 1.25rem; /* 40px */
+  /* - Font size (inputs): 32px */
+}
+
+input,
+label {
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  border: 0;
+  outline: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+html {
+  font-size: 16px;
+  font-family: "Poppins";
+}
+
+body {
+  background-color: var(--main-bg);
+}
+
+.container {
+  width: min(90%, 840px);
+  margin: 50px auto;
+  padding: 1.78125rem;
+  background-color: var(--White);
+  border-radius: 20px;
+  border-bottom-right-radius: 200px;
+}
+
+.container__box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--la);
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--placeholder);
+  position: relative;
+}
+
+.input-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--sm);
+  color: var(--label);
+}
+
+.input-box label {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.input-box input {
+  width: 100%;
+  padding: var(--sm);
+  border: 1px solid var(--placeholder);
+  border-radius: 4px;
+  caret-color: var(--Purple);
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.input-box input:focus {
+  border-color: var(--Purple);
+}
+
+input::placeholder {
+  color: var(--label);
+}
+
+.input-box.active label {
+  color: var(--Light-red);
+}
+
+.input-box.active input {
+  border-color: var(--Light-red);
+}
+
+.error {
+  display: none;
+  color: var(--Light-red);
+  font-size: 12px;
+  font-weight: var(--font-normal);
+  font-style: italic;
+}
+
+.error.active {
+  display: block;
+}
+
+.container__image {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  background-color: var(--Purple);
+  border-radius: 50%;
+  transform: translate(50%, 50%);
+}
+
+.container__image img {
+  max-width: 50%;
+}
+
+.button {
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--black);
+}
+
+.container__show {
+  padding-top: 3rem;
+  line-height: 1.2;
+}
+
+.show-box {
+  font-size: clamp(20px, 5vw + 1rem, 100px);
+  font-weight: var(--font-extraBold);
+  font-style: italic;
+}
+
+.value {
+  color: var(--Purple);
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 32px;
+  }
+  body {
+    position: relative;
+    min-height: 100vh;
+  }
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    min-height: 650px;
+  }
+  .container__box {
+    padding-right: 25%;
+    padding-bottom: var(--la);
+  }
+  .input-box label {
+    font-size: var(--sm);
+  }
+  .container__image {
+    height: 100px;
+    width: 100px;
+    bottom: 0;
+    right: 0;
+    transform: translateY(50%);
+  }
+  .container__image img {
+    max-width: 100%;
+  }
+  .container__show {
+    padding-top: var(--la);
+  }
+  .show-box {
+    font-size: 100px;
+  }
+}
